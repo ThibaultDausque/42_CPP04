@@ -6,28 +6,22 @@ Dog::Dog() : Animal()
 	this->_type = "dog";
 }
 
-Dog::Dog(const Dog& copy) : Animal(copy)
-{
-	std::cout << "A copy of a dog has been done." << std::endl;
-	*this = copy;
-}
-
 Dog::~Dog()
 {
 	std::cout << "A dog has been destroyed." << std::endl;
 }
 
-Dog& Dog::operator=(const Dog& dog)
+Dog::Dog(const Dog& cpy) : Animal(cpy)
 {
-	if (this != &dog)
+	std::cout << "A copy of a Dog has been done." << std::endl;
+	*this = cpy;
+}
+
+Dog&	Dog::operator=(const Dog& src)
+{
+	if (this != &src)
 	{
-		this->_type = dog._type;
+		this->_type = src._type;
 	}
-	return (*this);
+	return *this;
 }
-
-void	Dog::makeSound() const
-{
-	std::cout << "Wouf wouf !" << std::endl;
-}
-

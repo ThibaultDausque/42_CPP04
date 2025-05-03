@@ -1,14 +1,16 @@
-CC = g++
-SRCS = Cat.cpp \
+CC = c++
+SRCS = Animal.cpp \
+	Cat.cpp \
 	Dog.cpp \
-	Animal.cpp \
+	WrongCat.cpp \
+	WrongAnimal.cpp \
 	main.cpp
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 OBJS_DIR = objs
 OBJS = $(SRCS:%.cpp=$(OBJS_DIR)/%.o)
 
-NAME = Animal
+NAME = animal
 
 all: $(NAME)
 

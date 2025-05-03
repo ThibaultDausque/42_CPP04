@@ -1,20 +1,16 @@
-#ifndef DOG_H
-# define DOG_H
+#ifndef DOG_HPP
+# define DOG_HPP
 
-#include <string>
-#include <iostream>
-#include "Animal.hpp"
+# include <iostream>
+# include "Animal.hpp"
 
 class Dog : public Animal
 {
 	public:
 		Dog();
-		Dog(const Dog& copy);
 		~Dog();
-		Dog&	operator=(const Dog& dog);
-		void	makeSound() const;
-
-	private:
+		Dog(const Dog& cpy);
+		Dog&	operator=(const Dog& cpy);
 };
 
 #endif

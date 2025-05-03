@@ -1,20 +1,16 @@
-#ifndef CAT_H
-# define CAT_H
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include <iostream>
-#include <string>
-#include "Animal.hpp"
+# include <iostream>
+# include "Animal.hpp"
 
 class Cat : public Animal
 {
 	public:
 		Cat();
-		Cat(const Cat& copy);
 		~Cat();
-		Cat&	operator=(const Cat& cat);
-		void	makeSound() const;
-
-	private:
+		Cat(const Cat& cpy);
+		Cat&	operator=(const Cat& src);
 };
 
 #endif

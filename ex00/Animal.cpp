@@ -2,34 +2,36 @@
 
 Animal::Animal()
 {
-	std::cout << "An animal has been created" << std::endl;
-	this->_type = "An animal";
+	std::cout << "animal hase been created." << std::endl;
+	this->_type = "animal";
 }
 
-Animal::Animal(const Animal& copy)
+Animal::Animal(const Animal& cpy)
 {
-	std::cout << "A copy of an animal has been created." << std::endl;
-	*this = copy;
+	std::cout << this->_type << " copy has been created." << std::endl;
+	*this = cpy;
+}
+
+Animal&	Animal::operator=(const Animal& src)
+{
+	if (this != &src)
+	{
+		this->_type = src._type;
+	}
+	return *this;
 }
 
 Animal::~Animal()
 {
-	std::cout << "An animal has been destroyed." << std::endl;
-}
-
-Animal&	Animal::operator=(const Animal& anim)
-{
-	if (this != &anim)
-		this->_type = anim._type;
-	return (*this);
+	std::cout << this->_type  << " has been destroyed." << std::endl;
 }
 
 void	Animal::makeSound() const
 {
-	std::cout << "An animal is making a sound." << std::endl;
+	std::cout << this->_type << " make a sound." << std::endl;
 }
 
 std::string	Animal::getType() const
 {
-	return (this->_type);
+	return this->_type;
 }

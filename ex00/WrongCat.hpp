@@ -1,18 +1,16 @@
 #ifndef WRONGCAT_HPP
 # define WRONGCAT_HPP
 
-# include <string>
 # include <iostream>
+# include "WrongAnimal.hpp"
 
-class WrongCat
+class WrongCat : public WrongAnimal
 {
 	public:
 		WrongCat();
-		WrongCat(const WrongCat& copy);
+		WrongCat(const WrongCat& cpy);
 		~WrongCat();
-		operator=(const WrongCat& src);
-		void		makeSound() const;
-		std::string	getType() const;
-}
+		WrongCat&	operator=(const WrongCat& src);
+};
 
 #endif

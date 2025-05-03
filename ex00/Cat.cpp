@@ -2,30 +2,26 @@
 
 Cat::Cat() : Animal()
 {
-	std::cout << "A cat has been created." << std::endl;
 	this->_type = "cat";
-}
-
-Cat::Cat(const Cat& copy) : Animal(copy)
-{
-	std::cout << "A copy of a cat has been done." << std::endl;
-	*this = copy;
+	std::cout << "cat has been created." << std::endl;
 }
 
 Cat::~Cat()
 {
-	std::cout << "A cat has been destroyed." << std::endl;
+	std::cout << "cat has been destroyed." << std::endl;
 }
 
-Cat&	Cat::operator=(const Cat& cat)
+Cat::Cat(const Cat& cpy) : Animal(cpy)
 {
-	if (this != &cat)
-		this->_type = cat._type;
-	return (*this);
+	*this = cpy;
+	std::cout << "A cat copy has been done." << std::endl;
 }
 
-void	Cat::makeSound() const
+Cat&	Cat::operator=(const Cat& src)
 {
-	std::cout << "Miaou miaou !" << std::endl;
+	if (this != &src)
+	{
+		this->_type = src._type;
+	}
+	return *this;
 }
-
