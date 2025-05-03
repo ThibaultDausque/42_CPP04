@@ -2,7 +2,7 @@
 
 Animal::Animal()
 {
-	std::cout << "animal hase been created." << std::endl;
+	std::cout << "animal has been created." << std::endl;
 	this->_type = "animal";
 }
 

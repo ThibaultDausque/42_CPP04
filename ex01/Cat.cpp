@@ -1,5 +1,5 @@
 #include "Cat.hpp"
-#include <Brain.hpp>
+#include "Brain.hpp"
 
 Cat::Cat() : Animal()
 {
@@ -33,9 +33,4 @@ Cat&	Cat::operator=(const Cat& src)
 void	Cat::makeSound() const
 {
 	std::cout << "Meow ! Meow !" << std::endl;
-}
-
-std::string	Cat::getType() const
-{
-	return this->_type;
 }

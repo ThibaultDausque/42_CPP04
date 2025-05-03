@@ -2,7 +2,7 @@
 
 Dog::Dog() : Animal()
 {
-	std::cout << "A dog has been created." << std::endl;
+	std::cout << "dog has been created." << std::endl;
 	this->_type = "dog";
 }
 
@@ -24,4 +24,9 @@ Dog&	Dog::operator=(const Dog& src)
 		this->_type = src._type;
 	}
 	return *this;
+}
+
+void	Dog::makeSound() const
+{
+	std::cout << "Wouf ! wouf !" << std::endl;
 }
