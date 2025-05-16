@@ -32,7 +32,7 @@ std::string const & AMateria::getType() const
 	return (this->_type);
 }
 
-virtual void	AMateria::use(ICharacter& target)
+void	AMateria::use(ICharacter& target)
 {
 	std::cout << "AMateria use an original attack on " << target.getName() <<std::endl;
 }

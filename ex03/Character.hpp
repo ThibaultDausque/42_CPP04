@@ -7,9 +7,11 @@ class Character: public ICharacter
 {
 	private:
 		AMateria*	_inventory[4];
+		std::string	_name;
 
 	public:
 		Character();
+		Character(std::string name);
 		Character(const Character& cpy);
 		Character&	operator=(const Character& src);
 		~Character();

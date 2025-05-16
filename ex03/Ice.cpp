@@ -19,6 +19,7 @@ Ice& Ice::operator=(const Ice& src)
 {
 	if (this != &src)
 		this->_type = src._type;
+	return (*this);
 }
 
 Ice*	Ice::clone() const
