@@ -9,7 +9,7 @@ int main()
 	
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
-	
+
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
 	
@@ -17,11 +17,6 @@ int main()
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	for (int i = 0; i < 5; i++)
-	{
-		tmp = src->createMateria("cure");
-		me->equip(tmp);
-	}
 	
 	ICharacter* bob = new Character("bob");
 	

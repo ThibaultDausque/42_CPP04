@@ -1,5 +1,4 @@
 #include "Character.hpp"
-#include "ICharacter.hpp"
 
 Character::Character(): ICharacter()
 {
