@@ -7,8 +7,8 @@ MateriaSource::MateriaSource(): IMateriaSource()
 	int		i;
 
 	i = 0;
-	while (this->_inventory[i])
-		this->_inventory[i++] = NULL;
+	while (i < 4)
+		this->_inventory[i++] = 0;
 }
 
 MateriaSource::MateriaSource(const MateriaSource& cpy): IMateriaSource(cpy)
@@ -18,7 +18,15 @@ MateriaSource::MateriaSource(const MateriaSource& cpy): IMateriaSource(cpy)
 
 MateriaSource::~MateriaSource()
 {
+	int		i;
 
+	i = 0;
+	while (i < 4)
+	{
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+		i++;
+	}
 }
 
 MateriaSource&	MateriaSource::operator=(const MateriaSource& src)
@@ -55,9 +63,22 @@ void	MateriaSource::learnMateria(AMateria* m)
 
 AMateria*	MateriaSource::createMateria(std::string const & type)
 {
-	
+	int		i;
+
+	if (type != "cure" && type != "ice")
+	{
+		std::cout << "unknown type" << std::endl;
+		return (0);
+	}
+	i = 0;
+	while (this->_inventory[i] && this->_inventory[i]->getType() != type && i < 4)
+		i++;
+	if (i > 4 || this->_inventory[i]->getType() != type)
+	{
+		std::cout << "Materia doesn't exist" << std::endl;
+		return (0);
+	}
+	return (this->_inventory[i]->clone());
 }
-
-
 
 

@@ -6,7 +6,7 @@ Character::Character(): ICharacter()
 	int		i;
 	this->_name = "toto";
 	i = 0;
-	while (this->_inventory[i])
+	while (i < 4)
 		this->_inventory[i++] = NULL;
 }
 
@@ -15,7 +15,7 @@ Character::Character(std::string name): _name(name)
 	int		i;
 	this->_name = name;
 	i = 0;
-	while (this->_inventory[i])
+	while (i < 4)
 		this->_inventory[i++] = NULL;
 }
 
@@ -26,7 +26,15 @@ Character::Character(const Character& cpy)
 
 Character::~Character()
 {
+	int		i;
 
+	i = 0;
+	while (i < 4)
+	{
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+		i++;
+	}
 }
 
 Character&	Character::operator=(const Character& src)
@@ -80,7 +88,7 @@ void	Character::unequip(int idx)
 {
 	if (idx < 4 && idx >= 0)
 	{
-		for (int i = idx; i < 3; ++i)
+		for (int i = idx; i < 4; ++i)
 			this->_inventory[i] = this->_inventory[i];
 	}
 }
@@ -91,7 +99,7 @@ void	Character::use(int idx, ICharacter& target)
 	{
 	   std::cout << this->_name << " use a Materia." << std::endl;
 		this->_inventory[idx]->use(target);
-		for (int i = idx; i < 3; ++i)
+		for (int i = idx; i < 4; ++i)
 			this->_inventory[i] = this->_inventory[i];
 	}
 }
