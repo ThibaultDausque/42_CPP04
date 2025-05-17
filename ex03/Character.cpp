@@ -91,6 +91,8 @@ void	Character::unequip(int idx)
 		for (int i = idx; i < 4; ++i)
 			this->_inventory[i] = this->_inventory[i];
 	}
+	else
+		std::cout << idx << " doesn't exist." << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target)
@@ -102,6 +104,8 @@ void	Character::use(int idx, ICharacter& target)
 		for (int i = idx; i < 4; ++i)
 			this->_inventory[i] = this->_inventory[i];
 	}
+	else
+		std::cout << idx << " doesn't exist." << std::endl;
 }
 
 
