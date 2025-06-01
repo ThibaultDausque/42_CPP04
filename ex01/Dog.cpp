@@ -23,6 +23,7 @@ Dog&	Dog::operator=(const Dog& src)
 {
 	if (this != &src)
 	{
+		delete this->_brain;
 		this->_type = src._type;
 		this->_brain = new Brain();
 	}
@@ -32,9 +33,4 @@ Dog&	Dog::operator=(const Dog& src)
 void	Dog::makeSound() const
 {
 	std::cout << "Wouf ! Wouf !" << std::endl;
-}
-
-std::string	Dog::getType() const
-{
-	return this->_type;
 }

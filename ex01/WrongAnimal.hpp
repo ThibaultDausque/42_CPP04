@@ -5,7 +5,7 @@
 
 class WrongAnimal
 {
-	private:
+	protected:
 		std::string	_type;
 
 	public:
@@ -13,8 +13,8 @@ class WrongAnimal
 		virtual ~WrongAnimal();
 		WrongAnimal(const WrongAnimal& cpy);
 		WrongAnimal&	operator=(const WrongAnimal& src);
-		virtual std::string	getType() const;
-		void		makeSound() const;
+		std::string	getType() const;
+		virtual void		makeSound() const;
 };
 
 #endif

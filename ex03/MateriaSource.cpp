@@ -38,6 +38,7 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& src)
 	{
 		while (this->_inventory[i])
 		{
+			delete this->_inventory[i];
 			this->_inventory[i] = src._inventory[i];
 			i++;
 		}

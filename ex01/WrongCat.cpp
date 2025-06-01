@@ -28,10 +28,5 @@ WrongCat& WrongCat::operator=(const WrongCat& src)
 
 void	WrongCat::makeSound() const
 {
-	std::cout << "wrong cat make a sound." << std::endl;
-}
-
-std::string WrongCat::getType() const
-{
-	return this->_type;
+	std::cout << "wrong cat make a wrong sound." << std::endl;
 }

@@ -13,7 +13,7 @@ class WrongAnimal
 		virtual ~WrongAnimal();
 		WrongAnimal(const WrongAnimal& cpy);
 		WrongAnimal&	operator=(const WrongAnimal& src);
-		virtual std::string	getType() const;
+		std::string	getType() const;
 		virtual void		makeSound() const;
 };
 

@@ -26,12 +26,12 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& src)
 	return *this;
 }
 
+std::string	WrongAnimal::getType() const
+{
+	return this->_type;
+}
+
 void	WrongAnimal::makeSound() const
 {
 	std::cout << "wrong animal make a sound." << std::endl;
-}
-
-std::string WrongAnimal::getType() const
-{
-	return this->_type;
 }

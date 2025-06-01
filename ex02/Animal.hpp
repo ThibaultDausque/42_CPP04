@@ -5,7 +5,7 @@
 
 class Animal
 {
-	private:
+	protected:
 		std::string	_type;
 
 	public:
@@ -13,8 +13,8 @@ class Animal
 		Animal(const Animal& cpy);
 		Animal&	operator=(const Animal& src);
 		virtual ~Animal();
-		virtual std::string	getType() const = 0;
-		virtual void		makeSound() const;
+		std::string	getType() const;
+		virtual void	makeSound() const = 0;
 };
 
 #endif

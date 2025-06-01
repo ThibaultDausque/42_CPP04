@@ -46,6 +46,7 @@ Character&	Character::operator=(const Character& src)
 		this->_name = src._name;
 		while (this->_inventory[i])
 		{
+			delete this->_inventory[i];
 			this->_inventory[i] = src._inventory[i];
 			i++;
 		}
@@ -87,6 +88,7 @@ void	Character::unequip(int idx)
 {
 	if (idx < 4 && idx >= 0)
 	{
+		delete this->_inventory[idx];
 		for (int i = idx; i < 4; ++i)
 			this->_inventory[i] = this->_inventory[i];
 	}

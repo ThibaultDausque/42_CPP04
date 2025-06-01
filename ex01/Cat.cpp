@@ -1,5 +1,4 @@
 #include "Cat.hpp"
-#include <Brain.hpp>
 
 Cat::Cat() : Animal()
 {
@@ -24,6 +23,7 @@ Cat&	Cat::operator=(const Cat& src)
 {
 	if (this != &src)
 	{
+		delete this->_brain;
 		this->_type = src._type;
 		this->_brain = new Brain();
 	}
@@ -33,9 +33,4 @@ Cat&	Cat::operator=(const Cat& src)
 void	Cat::makeSound() const
 {
 	std::cout << "Meow ! Meow !" << std::endl;
-}
-
-std::string	Cat::getType() const
-{
-	return this->_type;
 }
