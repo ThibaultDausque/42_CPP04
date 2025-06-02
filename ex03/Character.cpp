@@ -1,62 +1,47 @@
 #include "Character.hpp"
 
-Character::Character(): ICharacter()
+Character::Character() : ICharacter()
 {
-	int		i;
 	this->_name = "toto";
-	i = 0;
-	while (i < 4)
-		this->_inventory[i++] = NULL;
+	for (int i = 0; i < 4; i++)
+		this->_item[i] = NULL;
 }
 
-Character::Character(std::string name): _name(name)
+Character::Character(std::string _name)
 {
-	int		i;
-	this->_name = name;
-	i = 0;
-	while (i < 4)
-		this->_inventory[i++] = NULL;
+	this->_name = _name;
+	for (int i = 0; i < 4; i++)
+		this->_item[i] = NULL;
 }
 
-Character::Character(const Character& cpy)
+Character::Character(const  Character& cpy) : ICharacter(cpy)
 {
 	*this = cpy;
 }
 
 Character::~Character()
 {
-	int		i;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (this->_inventory[i])
-			delete this->_inventory[i];
-		i++;
-	}
+	for (int i = 0; i < 4; i++)
+		delete this->_item[i];
 }
 
 Character&	Character::operator=(const Character& src)
 {
-	int		i;
-
-	i = 0;
 	if (this != &src)
 	{
 		this->_name = src._name;
-		while (this->_inventory[i])
+		for (int i = 0; i < 4; i++)
 		{
-			delete this->_inventory[i];
-			this->_inventory[i] = src._inventory[i];
-			i++;
+			delete this->_item[i];
+			this->_item[i] = src._item[i];
 		}
 	}
-	return (*this);
+	return *this;
 }
 
-std::string	const & Character::getName() const
+std::string const	& Character::getName() const
 {
-	return (this->_name);
+	return this->_name;
 }
 
 void	Character::equip(AMateria* m)
@@ -64,52 +49,40 @@ void	Character::equip(AMateria* m)
 	int		i;
 
 	i = 0;
-	if (!m)
-	{
-		std::cout << "No materia equiped." << std::endl;
-		return ;
-	}
-	while (this->_inventory[i])
+	while (this->_item[i])
 		i++;
-	if (i < 4 && i >= 0)
+	if (i >= 4)
 	{
-		std::cout << this->_name << " equiped of a Materia " << m->getType() << std::endl;
-		this->_inventory[i++] = m;
+		std::cout << "* Inventory is full *" << std::endl;
 		return ;
 	}
-	else if (i >= 4)
+	else
 	{
-		std::cout << "The inventory of " << this->_name << " is full." << std::endl;
+		this->_item[i] = m;
+		std::cout << "* Materia of type " << m->getType() << " equiped." << std::endl;
 		return ;
 	}
 }
 
 void	Character::unequip(int idx)
 {
-	if (idx < 4 && idx >= 0)
+	if (idx < 0 || idx > 3)
 	{
-		delete this->_inventory[idx];
-		for (int i = idx; i < 4; ++i)
-			this->_inventory[i] = this->_inventory[i];
+		std::cout << "* Inventory index doesn't exist *" << std::endl;
+		return ;
 	}
-	else
-		std::cout << idx << " doesn't exist." << std::endl;
+	for (int i = idx; i < 4; i++)
+		this->_item[i] = this->_item[i + 1];
+	std::cout << "* Item unequiped *" << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (idx >= 0 && idx < 4)
+	if (idx < 0 || idx > 3)
 	{
-	   std::cout << this->_name << " use a Materia." << std::endl;
-		this->_inventory[idx]->use(target);
-		for (int i = idx; i < 4; ++i)
-			this->_inventory[i] = this->_inventory[i];
+		std::cout << "* Inventory index doesn't exist *" << std::endl;
+		return ;
 	}
-	else
-		std::cout << idx << " doesn't exist." << std::endl;
+	std::cout << "* " << this->_name <<" used a " << this->_item[idx]->getType()
+		<< " on " << target.getName() << " *" << std::endl;
 }
-
-
-
-
-

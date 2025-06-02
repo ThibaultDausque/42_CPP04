@@ -1,7 +1,8 @@
-#include "Cure.hpp"
-#include "Ice.hpp"
-#include "Character.hpp"
 #include "MateriaSource.hpp"
+#include "Character.hpp"
+#include "ICharacter.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
 int main()
 {
@@ -22,11 +23,9 @@ int main()
 	
 	me->use(0, *bob);
 	me->use(1, *bob);
-	me->use(42, *bob);
 	
 	delete bob;
 	delete me;
 	delete src;
-
 	return 0;
 }

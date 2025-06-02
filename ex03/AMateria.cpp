@@ -2,7 +2,7 @@
 
 AMateria::AMateria()
 {
-	this->_type = "a";
+
 }
 
 AMateria::AMateria(std::string const & type)
@@ -15,24 +15,24 @@ AMateria::AMateria(const AMateria& cpy)
 	*this = cpy;
 }
 
-AMateria&	AMateria::operator=(const AMateria& src)
-{
-	if (this != &src)
-		this->_type = src._type;
-	return (*this);
-}
-
 AMateria::~AMateria()
 {
 
 }
 
-std::string const & AMateria::getType() const
+AMateria&	AMateria::operator=(const AMateria& src)
 {
-	return (this->_type);
+	if (this != &src)
+		this->_type = src._type;
+	return *this;
+}
+
+std::string const	& AMateria::getType() const
+{
+	return this->_type;
 }
 
 void	AMateria::use(ICharacter& target)
 {
-	std::cout << "AMateria use an original attack on " << target.getName() <<std::endl;
+	std::cout << "* use a Materia on " << target.getName() << "." << std::endl;
 }
